@@ -1,0 +1,17 @@
+.nav{
+    display: flex;
+    align-items: center;
+    min-height: 45px;
+    background: #d7e3ff;
+    padding: 8px;
+}
+.nav > * {
+    background: #d7e3ff;
+    color: #005cbb;
+    margin: 4px;
+}
+
+.nav > *:hover{
+    background-color: #bfcff6;
+    border-radius: 25px;
+}

@@ -1,0 +1,78 @@
+<div *ngIf="expenses?.length">
+  <div class="filterWrapper">
+    <div class="chipWrapper">
+    <mat-chip-listbox class="mat-mdc-chip-set-stacked" aria-label="Color selection">
+      <span class="chipsFilter">
+        @for (chip of availableColors; track chip) {
+        <mat-chip-option (click)="selectedChip(chip.name)" [selected]="chip.selected"
+          [color]="chip.color">{{chip.name}}</mat-chip-option>
+        }
+      </span>
+    </mat-chip-listbox>
+  </div>
+  <div class="dateFilterWrapper">
+    <mat-form-field>
+      <!-- <mat-label>Start date</mat-label> -->
+      <input matInput [matDatepicker]="picker" placeholder="Start date" name="datepickerInput" [max]="today" [value]="startDate"
+        [(ngModel)]="startDate" (dateChange)="onChange()">
+      <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+      <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+    <mat-form-field>
+      <!-- <mat-label>End date</mat-label> -->
+      <input matInput [matDatepicker]="endpicker" placeholder="End date" name="datepickerInput" [min]="startDate" [max]="today"
+        [value]="endDate" [(ngModel)]="endDate" (dateChange)="onChange()">
+      <!-- <mat-hint>MM/DD/YYYY</mat-hint> -->
+      <mat-datepicker-toggle matIconSuffix [for]="endpicker"></mat-datepicker-toggle>
+      <mat-datepicker #endpicker></mat-datepicker>
+    </mat-form-field>
+    <mat-icon (click)="clearDateFilter()">cancel</mat-icon>
+  </div>
+  </div>
+  <table mat-table [dataSource]="filteredExpenses" class="mat-elevation-z8">
+    <ng-container matColumnDef="expenseTypeCol">
+      <th mat-header-cell *matHeaderCellDef> Expense Type </th>
+      <td mat-cell *matCellDef="let element"> {{element.ExpenseType}} </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="expenseDateCol">
+      <th mat-header-cell *matHeaderCellDef> Expense Date </th>
+      <td mat-cell *matCellDef="let element"> {{element?.ExpenseDate | date:'longDate'}} </td>
+    </ng-container>
+
+    <!-- Weight Column -->
+    <ng-container matColumnDef="expenseNameCol">
+      <th mat-header-cell *matHeaderCellDef> Expense Name </th>
+      <td mat-cell *matCellDef="let element"> {{element.ExpenseName}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="expenseAmountCol">
+      <th mat-header-cell *matHeaderCellDef> Expense Amount </th>
+      <td mat-cell *matCellDef="let element"> {{element.ExpenseAmount}} </td>
+    </ng-container>
+
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="paymentModeCol">
+      <th mat-header-cell *matHeaderCellDef> Payment Mode </th>
+      <td mat-cell *matCellDef="let element"> {{element.PaymentMode}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="deleteCol">
+      <th mat-header-cell *matHeaderCellDef> Action </th>
+      <td mat-cell *matCellDef="let element">
+        <!-- <button mat-icon-button class="material-icons app-toolbar-menu save-button" matTooltip="Edit" color="primary">
+          <mat-icon>edit</mat-icon>
+        </button> -->
+        <button mat-icon-button class="material-icons app-toolbar-menu delete-button" matTooltip="Delete" color="warn" (click)="deleteExpense(element)">
+          <mat-icon>delete</mat-icon>
+        </button>
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
