@@ -57,7 +57,7 @@ Expense Analyzer is a web application designed to help users manage and track th
 ## Screens
 ## Screenshots
 1. Login Page
-![Login Page](/src\assets\screenshots\LoginPage.png)
+![Login Page](./src/assets/screenshots/LoginPage.png)
 2. Signup Page
 ![Signup Page](src\assets\screenshots\SignupPage.png)
 3. Add Expense Page
