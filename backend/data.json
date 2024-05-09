@@ -1,0 +1,27 @@
+{
+    "Result" :[{
+        "ExpenseType":"household",
+        "ExpenseName":"CC Bill",
+        "ExpenseAmount":"1000",
+        "PaymentMode":"Cash"
+    },
+    {
+        "ExpenseType":"household",
+        "ExpenseName":"CC Bill 2",
+        "ExpenseAmount":"2000",
+        "PaymentMode":"Cash"
+    },
+    {
+        "ExpenseType":"household",
+        "ExpenseName":"CC Bill 3",
+        "ExpenseAmount":"3000",
+        "PaymentMode":"Cash"
+    },
+    {
+        "ExpenseType":"household",
+        "ExpenseName":"CC Bill 4",
+        "ExpenseAmount":"4000",
+        "PaymentMode":"Cash"
+    }
+]
+}
